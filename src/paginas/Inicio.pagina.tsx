@@ -1,7 +1,12 @@
 import Filtros from "../componentes/personajes/filtros.componente"
 import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
 import Paginacion from "../componentes/paginacion/paginacion.componente";
- 
+import { useEffect, useState } from "react";
+import { useSelector } from "../store/store";
+import { searchCharacter } from "../services/personajes.services";
+import { Personaje } from "../componentes/types/personaje.types";
+
+
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
  * 
@@ -10,7 +15,19 @@ import Paginacion from "../componentes/paginacion/paginacion.componente";
  * 
  * @returns la pagina de inicio
  */
+
 const PaginaInicio = () => {
+
+    const personajeSearch = useSelector((state)=> state.personajes.search);
+    const [personajes, setPersonajes]=useState<Personaje[]>([]);
+    
+
+    useEffect(()=>{
+        searchCharacter(personajeSearch).then((data: Personaje[])=>{
+            setPersonajes(data);
+        })
+    },[personajeSearch]);
+
     return <div className="container">
         <div className="actions">
             <h3>Catálogo de Personajes</h3>
@@ -18,7 +35,7 @@ const PaginaInicio = () => {
         </div>
         <Filtros />
         <Paginacion />
-        <GrillaPersonajes />
+        <GrillaPersonajes/>
         <Paginacion />
     </div>
 }
