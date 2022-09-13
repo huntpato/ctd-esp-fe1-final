@@ -1,4 +1,8 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { searchCharactersThunk } from '../../actions/characters.actions';
+import { useSelector } from '../../store/store';
+import Character from '../types/character.types';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 
@@ -14,11 +18,25 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
 
 const GrillaPersonajes : FC = () => {
 
-    return <div className="grilla-personajes">
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
-       <TarjetaPersonaje />
-    </div>
+    const dispatch = useDispatch();
+    const charactersSearch = useSelector(state => state.characters.characters);
+
+    useEffect(()=>{
+        dispatch(searchCharactersThunk("https://rickandmortyapi.com/api/character/"));
+    },[])
+
+    if(!charactersSearch || charactersSearch.length === 0){
+        return <>Lo sentimos, no hay personajes</>
+    }
+
+    return (
+        <div className="grilla-personajes">
+            {charactersSearch?.map((character : Character) =>{
+                return(
+                    <TarjetaPersonaje key={character.id} characterData={character}/>
+                );
+            })}
+        </div>)
 }
  
 export default GrillaPersonajes;

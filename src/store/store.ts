@@ -1,24 +1,20 @@
-import { combineReducers, compose, createStore } from "@reduxjs/toolkit";
+import { combineReducers } from "@reduxjs/toolkit";
+import { createStore,applyMiddleware } from 'redux';
 import { TypedUseSelectorHook, useSelector as useReduxSelector } from "react-redux";
-import personajesReducer from "../reducers/personajes.reducer";
+import thunk from 'redux-thunk'
+import charactersReducer from "../reducers/characters.reducer";
+
+// import { composeWithDevTools } from "@reduxjs/toolkit/dist/devtoolsExtension";
 
 const rootReducer = combineReducers({
-    personajes: personajesReducer,
+    characters: charactersReducer,
 });
 
 // IRootState
 export type IRootState = ReturnType<typeof rootReducer>;
 export const useSelector: TypedUseSelectorHook<IRootState> = useReduxSelector
 
-// Redux dev tools
-declare global {
-    interface Window {
-      __REDUX_DEVTOOLS_EXTENSION_COMPOSE__?: typeof compose;
-    }
-  }
-// Redux dev tools
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
 export const store = createStore(
-    rootReducer, composeEnhancers() //middlewares
+    rootReducer,
+    applyMiddleware(thunk) //middlewares
 );

@@ -1,20 +1,30 @@
+import { ChangeEvent } from 'react';
 import { useDispatch } from 'react-redux';
-import { searchPersonaje } from '../../actions/personajes.actions';
+import { searchCharactersThunk } from '../../actions/characters.actions';
 import { useSelector } from '../../store/store';
 
 import './filtros.css';
 
 const Filtros = () => {
-  const inputsearch = useSelector((state) => state.personajes.search);
+  
   const dispatch = useDispatch();
+
+  const handleChange = async(e : ChangeEvent<HTMLInputElement>) => {
+    const currentSearch = e.target.value;
+    if(currentSearch?.length >=3){
+      dispatch(searchCharactersThunk(`https://rickandmortyapi.com/api/character/?name=${e.target.value}`))
+    };
+    if(currentSearch?.length === 0){
+      dispatch(searchCharactersThunk("https://rickandmortyapi.com/api/character/"))
+    }
+  }
 
   return (
     <div className="filtros">
       <label htmlFor="nombre">Filtrar por nombre:</label>
       <input
         type="text"
-        value={inputsearch}
-        onChange={(e) => dispatch(searchPersonaje(e.target.value))}
+        onChange={handleChange}
         placeholder="Rick, Morty, Beth, Alien, ...etc"
         name="nombre"
       />

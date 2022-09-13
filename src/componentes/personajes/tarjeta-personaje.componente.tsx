@@ -1,23 +1,28 @@
+import { FC } from 'react';
 import BotonFavorito from '../botones/boton-favorito.componente';
+import Character from '../types/character.types';
 import './tarjeta-personaje.css';
 
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
  * 
- * Deberás agregar las propiedades necesarias para mostrar los datos de los personajes
- * 
- * 
+ * @author Patricia Hunt
  * @returns un JSX element 
  */
-const TarjetaPersonaje = () => {
+export interface TarjetaPersonajeProps{
+    characterData: Character;
+}
 
-    return <div className="tarjeta-personaje">
-        <img src="https://rickandmortyapi.com/api/character/avatar/1.jpeg" alt="Rick Sanchez"/>
+const TarjetaPersonaje : FC<TarjetaPersonajeProps> = ({ characterData }) => {
+
+    return (   
+    <div className="tarjeta-personaje">
+        <img src={characterData.image} alt={characterData.name}/>
         <div className="tarjeta-personaje-body">
-            <span>Rick Sanchez</span>
+            <span>{characterData.name}</span>
             <BotonFavorito esFavorito={false}/>
         </div>
-    </div>
+    </div>)
 }
 
 export default TarjetaPersonaje;

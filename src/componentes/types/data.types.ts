@@ -1,10 +1,10 @@
 import Character from "./character.types";
 import Pagination from "./pagination.types";
 
-interface DataApi {
+interface DataAPI {
     info: Pagination;
     results: Character[];
     // error: string;
 }
 
-export default DataApi;
+// export default DataAPI;
