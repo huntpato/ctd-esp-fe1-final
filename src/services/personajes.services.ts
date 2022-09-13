@@ -1,7 +1,7 @@
-import { Personaje } from "../componentes/types/personaje.types";
+import Character from "../componentes/types/character.types";
 
 
-export const searchCharacter = async (name?: string): Promise< Personaje[]> => {
+export const searchCharacter = async (name?: string): Promise< Character[]> => {
     let params = "?"
     if(name){
         params += `name=${name}`

@@ -4,7 +4,7 @@ import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { useEffect, useState } from "react";
 import { useSelector } from "../store/store";
 import { searchCharacter } from "../services/personajes.services";
-import { Personaje } from "../componentes/types/personaje.types";
+import Character from "../componentes/types/character.types";
 
 
 /**
@@ -19,11 +19,11 @@ import { Personaje } from "../componentes/types/personaje.types";
 const PaginaInicio = () => {
 
     const personajeSearch = useSelector((state)=> state.personajes.search);
-    const [personajes, setPersonajes]=useState<Personaje[]>([]);
+    const [personajes, setPersonajes]=useState<Character[]>([]);
     
 
     useEffect(()=>{
-        searchCharacter(personajeSearch).then((data: Personaje[])=>{
+        searchCharacter(personajeSearch).then((data: Character[])=>{
             setPersonajes(data);
         })
     },[personajeSearch]);

@@ -1,10 +1,10 @@
 import { SearchPersonajeAction } from "../actions/personajes.actions";
-import { Personaje } from "../componentes/types/personaje.types";
+import Character from "../componentes/types/character.types";
 
 
 interface PersonajesState{
     search: string;
-    personajes: Personaje[];
+    personajes: Character[];
 }
 
 const initialState = {

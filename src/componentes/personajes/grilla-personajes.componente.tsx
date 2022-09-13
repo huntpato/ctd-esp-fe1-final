@@ -1,3 +1,4 @@
+import { FC } from 'react';
 import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
 
@@ -11,7 +12,7 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  */
 
 
-const GrillaPersonajes= () => {
+const GrillaPersonajes : FC = () => {
 
     return <div className="grilla-personajes">
        <TarjetaPersonaje />
