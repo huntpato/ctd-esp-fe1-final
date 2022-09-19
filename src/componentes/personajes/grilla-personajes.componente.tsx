@@ -25,8 +25,7 @@ const GrillaPersonajes : FC = () => {
     },[])
 
     if(status === "LOADING") return <>Cargando personajes...</>
-    if(status === "FAILED") return <>No se pudieron cargar los personajes</>
-    if(!data || data?.results?.length === 0) return <>Lo sentimos, no hay personajes</>;
+    if(!data || data?.results?.length === 0 || data?.error?.length >= 1) return <>Lo sentimos, no hay personajes con ese nombre :(</>;
 
     return (
         <div className="grilla-personajes">

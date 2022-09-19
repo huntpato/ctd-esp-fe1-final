@@ -1,6 +1,6 @@
-import Character from "../componentes/types/character.types";
+import DataAPI from "../componentes/types/data.types";
 
-export const getCharactersAPI = async (url: string): Promise<Character[]> => {
+export const getCharactersAPI = async (url: string): Promise<DataAPI> => {
     try{
         const response = await fetch(url);
         const data = await response.json();

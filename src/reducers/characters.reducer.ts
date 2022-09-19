@@ -5,14 +5,14 @@ import DataAPI from "../componentes/types/data.types";
 
 
 export interface CharacterState{
-    status: "LOADING" | "COMPLETED" | "FAILED";
+    status: "IDLE" | "LOADING" | "COMPLETED";
     data: DataAPI;
     error: string | null;
 }
 
 const initialState : CharacterState = {
-    status: "COMPLETED",
-    data:{ info: {next: "", prev: ""}, results:[]},
+    status: "IDLE",
+    data:{ info: {next: "", prev: ""}, results:[], error: ""},
     error: null
 }
 
@@ -22,7 +22,7 @@ const charactersReducer : Reducer<CharacterState, CharactersActions> = (state = 
             return {
                 ...state,
                 status: "LOADING",
-                // data:{ info: {next: "", prev: ""}, results:[]},
+                data:{ info: {next: "", prev: ""}, results:[],error:""},
                 error: null
             }
         case "BUSCAR_PERSONAJES_SUCCESS":
@@ -34,7 +34,7 @@ const charactersReducer : Reducer<CharacterState, CharactersActions> = (state = 
         case "BUSCAR_PERSONAJES_ERROR":
             return{
                 ...state,
-                status: "FAILED",
+                status: "COMPLETED",
                 error: action.payload.error
             }
         default:
@@ -42,4 +42,4 @@ const charactersReducer : Reducer<CharacterState, CharactersActions> = (state = 
     }
 };
 
-export default charactersReducer
+export default charactersReducer;

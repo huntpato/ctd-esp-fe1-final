@@ -4,7 +4,7 @@ import Pagination from "./pagination.types";
 interface DataAPI {
     info: Pagination;
     results: Character[];
-    // error: string;
+    error: string;
 }
 
 export default DataAPI;

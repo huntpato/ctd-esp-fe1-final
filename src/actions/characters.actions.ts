@@ -23,11 +23,11 @@ export interface SearchCharactersErrorAction extends Action{
 
 export interface SearchCharactersThunkAction extends ThunkAction<void, IRootState, unknown, CharactersActions>{};
 
-const searchCharacters : ActionCreator<SearchCharactersAction> = () => {
+const searchCharacters: ActionCreator<SearchCharactersAction> = () => {
     return{
         type: "BUSCAR_PERSONAJES",
     }
-}
+};
 
 const searchCharactersSucess: ActionCreator<SearchCharactersSucessAction> = (data : DataAPI) => {
     return{
@@ -36,17 +36,16 @@ const searchCharactersSucess: ActionCreator<SearchCharactersSucessAction> = (dat
             data: data
         }
     }
-}
+};
 
-const searchCharactersError : ActionCreator<SearchCharactersErrorAction> = (error: string) => {
-    return{
+const searchCharactersFailed: ActionCreator<SearchCharactersErrorAction> = (error: string) => {
+    return {
         type: "BUSCAR_PERSONAJES_ERROR",
         payload:{
             error: error
         }
     }
-}
-
+};
 
 export const searchCharactersThunk = (query: string): SearchCharactersThunkAction => {
     return async (dispatch, getstate) => {
@@ -55,8 +54,8 @@ export const searchCharactersThunk = (query: string): SearchCharactersThunkActio
                 const data = await getCharactersAPI(query);
                 dispatch(searchCharactersSucess(data))
             } catch (error) {
-                const errorMessage = new Error("No se encontró ningun personaje")
-                dispatch(searchCharactersError(errorMessage))
+                const errorMessage = "no hay personajes"
+                dispatch(searchCharactersFailed(errorMessage))
             }
     }
 };
