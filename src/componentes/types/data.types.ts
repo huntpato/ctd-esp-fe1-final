@@ -7,4 +7,4 @@ interface DataAPI {
     // error: string;
 }
 
-// export default DataAPI;
+export default DataAPI;

@@ -15,23 +15,22 @@ import TarjetaPersonaje from './tarjeta-personaje.componente';
  * @returns un JSX element 
  */
 
-
 const GrillaPersonajes : FC = () => {
 
     const dispatch = useDispatch();
-    const charactersSearch = useSelector(state => state.characters.characters);
+    const {data, status} = useSelector(state => state.data);
 
     useEffect(()=>{
         dispatch(searchCharactersThunk("https://rickandmortyapi.com/api/character/"));
     },[])
 
-    if(!charactersSearch || charactersSearch.length === 0){
-        return <>Lo sentimos, no hay personajes</>
-    }
+    if(status === "LOADING") return <>Cargando personajes...</>
+    if(status === "FAILED") return <>No se pudieron cargar los personajes</>
+    if(!data || data?.results?.length === 0) return <>Lo sentimos, no hay personajes</>;
 
     return (
         <div className="grilla-personajes">
-            {charactersSearch?.map((character : Character) =>{
+            {data?.results?.map((character : Character) =>{
                 return(
                     <TarjetaPersonaje key={character.id} characterData={character}/>
                 );

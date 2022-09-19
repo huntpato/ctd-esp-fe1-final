@@ -1,43 +1,41 @@
 
 import { Reducer } from "@reduxjs/toolkit";
 import { CharactersActions } from "../actions/characters.actions";
-import Character from "../componentes/types/character.types";
+import DataAPI from "../componentes/types/data.types";
 
 
 export interface CharacterState{
-    search: string;
-    status: "LOADING" | "COMPLETED";
-    characters: Character[];
+    status: "LOADING" | "COMPLETED" | "FAILED";
+    data: DataAPI;
     error: string | null;
 }
 
 const initialState : CharacterState = {
-    search: '',
     status: "COMPLETED",
-    characters:[],
+    data:{ info: {next: "", prev: ""}, results:[]},
     error: null
 }
 
 const charactersReducer : Reducer<CharacterState, CharactersActions> = (state = initialState, action) => {
     switch (action.type) {
-        case "BUSCAR_PERSONAJE":
+        case "BUSCAR_PERSONAJES":
             return {
                 ...state,
                 status: "LOADING",
-                search: action.name,
+                // data:{ info: {next: "", prev: ""}, results:[]},
                 error: null
             }
-        case "BUSCAR_PERSONAJE_ERROR":
+        case "BUSCAR_PERSONAJES_SUCCESS":
             return{
                 ...state,
                 status: "COMPLETED",
-                error: action.error
+                data: action.payload.data,
             }
-        case "BUSCAR_PERSONAJE_SUCCESS":
+        case "BUSCAR_PERSONAJES_ERROR":
             return{
                 ...state,
-                status: "COMPLETED",
-                characters: action.characters
+                status: "FAILED",
+                error: action.payload.error
             }
         default:
             return{ ...state};
