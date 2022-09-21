@@ -22,7 +22,7 @@ const GrillaPersonajes : FC = () => {
 
     useEffect(()=>{
         dispatch(searchCharactersThunk("https://rickandmortyapi.com/api/character/"));
-    },[])
+    },[]);
 
     if(status === "LOADING") return <>Cargando personajes...</>
     if(!data || data?.results?.length === 0 || data?.error?.length >= 1) return <>Lo sentimos, no hay personajes con ese nombre :(</>;
@@ -31,7 +31,7 @@ const GrillaPersonajes : FC = () => {
         <div className="grilla-personajes">
             {data?.results?.map((character : Character) =>{
                 return(
-                    <TarjetaPersonaje key={character.id} characterData={character}/>
+                    <TarjetaPersonaje key={character.id} character={character}/>
                 );
             })}
         </div>)

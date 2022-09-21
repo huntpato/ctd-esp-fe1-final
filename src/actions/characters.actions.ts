@@ -5,15 +5,14 @@ import { IRootState } from "../store/store";
 
 export interface SearchCharactersAction extends Action{
     type: "BUSCAR_PERSONAJES";
+    query: string;
 }
-
 export interface SearchCharactersSucessAction extends Action{
     type: "BUSCAR_PERSONAJES_SUCCESS";
     payload:{
         data: DataAPI;
     }
 }
-
 export interface SearchCharactersErrorAction extends Action{
     type: "BUSCAR_PERSONAJES_ERROR";
     payload:{
@@ -21,11 +20,10 @@ export interface SearchCharactersErrorAction extends Action{
     }
 }
 
-export interface SearchCharactersThunkAction extends ThunkAction<void, IRootState, unknown, CharactersActions>{};
-
-const searchCharacters: ActionCreator<SearchCharactersAction> = () => {
+const searchCharacters: ActionCreator<SearchCharactersAction> = (query: string) => {
     return{
         type: "BUSCAR_PERSONAJES",
+        query: query,
     }
 };
 
@@ -46,6 +44,8 @@ const searchCharactersFailed: ActionCreator<SearchCharactersErrorAction> = (erro
         }
     }
 };
+
+export interface SearchCharactersThunkAction extends ThunkAction<void, IRootState, unknown, CharactersActions>{};
 
 export const searchCharactersThunk = (query: string): SearchCharactersThunkAction => {
     return async (dispatch, getstate) => {

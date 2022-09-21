@@ -10,17 +10,17 @@ import './tarjeta-personaje.css';
  * @returns un JSX element 
  */
 export interface TarjetaPersonajeProps{
-    characterData: Character;
+    character: Character;
 }
 
-const TarjetaPersonaje : FC<TarjetaPersonajeProps> = ({ characterData }) => {
+const TarjetaPersonaje : FC<TarjetaPersonajeProps> = ({ character }) => {
 
     return (   
     <div className="tarjeta-personaje">
-        <img src={characterData.image} alt={characterData.name}/>
+        <img src={character.image} alt={character.name}/>
         <div className="tarjeta-personaje-body">
-            <span>{characterData.name}</span>
-            <BotonFavorito esFavorito={false}/>
+            <span>{character.name}</span>
+            <BotonFavorito character={character}/>
         </div>
     </div>)
 }

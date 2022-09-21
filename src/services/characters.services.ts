@@ -6,6 +6,6 @@ export const getCharactersAPI = async (url: string): Promise<DataAPI> => {
         const data = await response.json();
         return data
     }catch(error){
-        throw new Error("No se encontraron presonajes")
+        throw new Error("No se encontraron personajes")
     }
-}
+};
