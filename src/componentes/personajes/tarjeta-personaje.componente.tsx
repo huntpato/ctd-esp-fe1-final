@@ -1,4 +1,7 @@
 import { FC } from 'react';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { selectedCharacterAction } from '../../actions/detailCharacter.actions';
 import BotonFavorito from '../botones/boton-favorito.componente';
 import Character from '../types/character.types';
 import './tarjeta-personaje.css';
@@ -15,9 +18,17 @@ export interface TarjetaPersonajeProps{
 
 const TarjetaPersonaje : FC<TarjetaPersonajeProps> = ({ character }) => {
 
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    const goToDetail = () => {
+        dispatch(selectedCharacterAction(character));
+        navigate("/detalle/")
+    }
+
     return (   
     <div className="tarjeta-personaje">
-        <img src={character.image} alt={character.name}/>
+        <img src={character.image} alt={character.name} onClick={goToDetail}/>
         <div className="tarjeta-personaje-body">
             <span>{character.name}</span>
             <BotonFavorito character={character}/>

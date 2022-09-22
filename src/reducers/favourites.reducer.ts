@@ -1,4 +1,5 @@
-import { Reducer } from 'react';
+
+import { Reducer } from '@reduxjs/toolkit';
 import { FavouritesActions } from '../actions/favourites.actions';
 import Character from '../componentes/types/character.types';
 
@@ -20,21 +21,19 @@ const favouritesReducer: Reducer<FavoritesState, FavouritesActions> = (
 
       const foundFav = map.some((charac) => charac.id === action.character.id);
 
-      if (foundFav) {
-        map = state.favouritesMap.filter(
-          (charac) => charac.id !== action.character.id
-        );
-      } else {
-        map.push(action.character);
-      }
+      foundFav
+        ? (map = state.favouritesMap.filter(
+            (charac) => charac.id !== action.character.id
+          ))
+        : map.push(action.character);
 
-      return { 
+      return {
         ...state,
         favouritesMap: map,
-        };
+      };
     case 'CLEAN_FAVORITOS':
       return {
-        ...initialState,
+        favouritesMap: [],
       };
     default:
       return {

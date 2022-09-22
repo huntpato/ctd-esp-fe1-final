@@ -1,11 +1,13 @@
-import { ChangeEvent } from 'react';
+import { ChangeEvent, FC, RefObject } from 'react';
 import { useDispatch } from 'react-redux';
 import { searchCharactersThunk } from '../../actions/characters.actions';
-import { useSelector } from '../../store/store';
-
 import './filtros.css';
 
-const Filtros = () => {
+export interface FiltrosProps {
+  filterRef: RefObject<HTMLInputElement>
+}
+
+const Filtros : FC<FiltrosProps> = ({filterRef}) => {
 
   const MINIMUM_CHARS_TO_SEARCH = 3;
   const dispatch = useDispatch();
@@ -28,6 +30,7 @@ const Filtros = () => {
         onChange={handleChange}
         placeholder="Rick, Morty, Beth, Alien, ...etc"
         name="nombre"
+        ref={filterRef}
       />
     </div>
   );

@@ -5,11 +5,13 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from 'redux-thunk'
 import charactersReducer from "../reducers/characters.reducer";
 import favouritesReducer from "../reducers/favourites.reducer";
+import selectedCharacterReducer from "../reducers/detailCharacter.reducer";
 
 
 const rootReducer = combineReducers({
     data: charactersReducer,
     fav: favouritesReducer,
+    selected: selectedCharacterReducer,
 });
 
 // IRootState
