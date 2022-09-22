@@ -2,11 +2,8 @@ import { FC } from 'react';
 import './tarjeta-episodio.css';
 
 /**
- * Tarjeta para cada episodio dentro de la vista de personaje.
- * 
- * Deberás agregar las propiedades necesarias para mostrar los datos de los episodios
- * 
- * 
+ * Tarjeta para cada episodio dentro de la vista de personaje detalle.
+ *
  * @returns un JSX element 
  */
 

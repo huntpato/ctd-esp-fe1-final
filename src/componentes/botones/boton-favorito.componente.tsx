@@ -24,6 +24,10 @@ const BotonFavorito : FC<BotonFavoritoProps> = ({ character }: BotonFavoritoProp
 
   const foundFav = favs.some((char) => char.id === character.id);
 
+  /**
+   * Función que se ejecuta cuando se hace click
+   * y dispara el dispatch de la acción toggleFavourites
+   */
   const handleToggle = () => {
     dispatch(toggleFavourites(character));
   };

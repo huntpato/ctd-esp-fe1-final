@@ -1,6 +1,12 @@
 import DataAPI from "../componentes/types/data.types";
 import Episode from "../componentes/types/episode.types";
 
+/**
+ * Función que recibe una url para llamar a la API
+ * 
+ * @param {string} url 
+ * @returns returns info and characters
+ */
 export const getCharactersAPI = async (url: string): Promise<DataAPI> => {
     try{
         const response = await fetch(url);
@@ -10,6 +16,13 @@ export const getCharactersAPI = async (url: string): Promise<DataAPI> => {
         throw new Error("No se encontraron personajes")
     }
 };
+
+/**
+ * Función
+ * 
+ * @param {string} episodes string de los ids de los episodios del personaje
+ * @returns devuelve toda la data de los episodios de un personaje
+ */
 
 export const getEpisodesAPI = async (episodes : string) : Promise<Episode[]> =>{
     try {

@@ -3,14 +3,11 @@ import { useDispatch } from 'react-redux';
 import { searchCharactersThunk } from '../../actions/characters.actions';
 import { useSelector } from '../../store/store';
 import Character from '../types/character.types';
-import './grilla-personajes.css';
 import TarjetaPersonaje from './tarjeta-personaje.componente';
+import './grilla-personajes.css';
 
 /**
  * Grilla de personajes para la pagina de inicio
- * 
- * Deberás agregar las funciones necesarias para mostrar y paginar los personajes
- * 
  * 
  * @returns un JSX element 
  */

@@ -9,7 +9,6 @@ import './tarjeta-personaje.css';
 /**
  * Tarjeta para cada personaje dentro de la grilla de personajes. 
  * 
- * @author Patricia Hunt
  * @returns un JSX element 
  */
 export interface TarjetaPersonajeProps{
@@ -21,6 +20,10 @@ const TarjetaPersonaje : FC<TarjetaPersonajeProps> = ({ character }) => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
+    /**
+     * Función que dispara el dispatch y redirige a la página de detalle
+     * al hacer click en la imagen del personaje.
+     */
     const goToDetail = () => {
         dispatch(selectedCharacterAction(character));
         navigate("/detalle/")

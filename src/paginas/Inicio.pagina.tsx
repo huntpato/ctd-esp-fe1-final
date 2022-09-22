@@ -1,9 +1,9 @@
-import Filtros from "../componentes/personajes/filtros.componente"
-import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
-import Paginacion from "../componentes/paginacion/paginacion.componente";
 import { FC, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { searchCharactersThunk } from "../actions/characters.actions";
+import Filtros from "../componentes/personajes/filtros.componente"
+import GrillaPersonajes from "../componentes/personajes/grilla-personajes.componente"
+import Paginacion from "../componentes/paginacion/paginacion.componente";
 
 /**
  * Esta es la pagina principal. Aquí se debera ver el panel de filtros junto con la grilla de personajes.
@@ -19,6 +19,10 @@ const PaginaInicio : FC = () => {
     const dispatch = useDispatch();
     const filterRef = useRef<HTMLInputElement>(null);
 
+    /**
+     * Función que al hacer click en el botón limpia el input de busqueda,
+     * y dispara el dispatch para traer todos los personajes iniciales.
+     */
     const cleanFilter = () =>{
         if (filterRef.current) {
             filterRef.current.value = "";

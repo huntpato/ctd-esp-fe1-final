@@ -8,7 +8,7 @@ import TarjetaPersonaje from "../componentes/personajes/tarjeta-personaje.compon
 import "../componentes/personajes/grilla-personajes.css";
 
 /**
- * Esta es la pagina de favoritos. Aquí se deberan ver todos los personajes marcados como favoritos
+ * Pagina de favoritos. Aquí se verán todos los personajes marcados como favoritos
 
  * @returns la pagina de favoritos
  */
@@ -18,6 +18,9 @@ const PaginaFavoritos : FC = () => {
     const favs = useSelector((state)=> state.fav.favouritesMap);
     const dispatch = useDispatch();
 
+    /**
+     * Función que limpia los favoritos
+     */
     const cleanFavs = () =>{
         dispatch(cleanFavourites());
     };

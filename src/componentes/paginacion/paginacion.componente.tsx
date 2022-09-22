@@ -6,9 +6,6 @@ import './paginacion.css';
 /**
  * Componente que contiene los botones para paginar
  *
- * Deberás agregar las propiedades necesarias para que funcione correctamente
- *
- *
  * @returns un JSX element
  */
 
@@ -16,11 +13,21 @@ const Paginacion = () => {
   const { data } = useSelector((state) => state.data);
   const dispatch = useDispatch();
 
+  /**
+   * Función que se ejecuta al hacer click sobre el botón anterior
+   * y dispara el dispatch
+   */
+
   const handlePrevPage = () => {
     if (data.info.prev !== undefined) {
       dispatch(searchCharactersThunk(data.info.prev));
     }
   };
+
+   /**
+   * Función que se ejecuta al hacer click sobre el botón siguiente
+   * y dispara el dispatch
+   */
 
   const handleNextPage = () => {
     if (data.info.next !== undefined) {

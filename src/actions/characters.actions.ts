@@ -1,7 +1,7 @@
 import { Action, ActionCreator, ThunkAction } from "@reduxjs/toolkit";
-import DataAPI from "../componentes/types/data.types";
 import { getCharactersAPI } from "../services/characters.services";
 import { IRootState } from "../store/store";
+import DataAPI from "../componentes/types/data.types";
 
 export interface SearchCharactersAction extends Action{
     type: "BUSCAR_PERSONAJES";
