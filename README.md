@@ -87,12 +87,12 @@ Solo se podrán instalar las siguientes dependencias:
 ### Componentes de UI
 
 Lista de componentes:
-* [src/componentes/layout/encabezado.componente.jsx](src/componentes/layout/encabezado.componente.jsx) - Encabezado requerido para cada una de las páginas. Facilita la navegación
-* [src/componentes/personajes/filtros.componente.tsx](src/componentes/personajes/filtros.componente.tsx) - Componente con el input text para realizar el filtrado
-* [src/componentes/personajes/grilla-personajes.componente.jsx](src/componentes/personajes/grilla-personajes.componente.jsx) - Grilla de personajes para la pagina de inicio
-* [src/componentes/personajes/tarjeta-personaje.componente.tsx](src/componentes/personajes/tarjeta-personaje.componente.tsx) - Tarjeta para cada personaje dentro de la grilla de personajes.
-* [src/componentes/botones/boton-favorito.componente.jsx](src/componentes/botones/boton-favorito.componente.jsx) - Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
-* [src/componentes/episodios/tarjeta-episodio.componente.tsx](src/componentes/episodios/tarjeta-episodio.componente.tsx) - Tarjeta para cada episodio dentro de la vista de personaje.
+* src/componentes/layout/encabezado.componente.jsx - Encabezado requerido para cada una de las páginas. Facilita la navegación
+* src/componentes/personajes/filtros.componente.tsx - Componente con el input text para realizar el filtrado
+* src/componentes/personajes/grilla-personajes.componente.jsx - Grilla de personajes para la pagina de inicio
+* src/componentes/personajes/tarjeta-personaje.componente.tsx - Tarjeta para cada personaje dentro de la grilla de personajes.
+* src/componentes/botones/boton-favorito.componente.jsx - Boton que indica si un elemento es favorito o no, y da la posibilidad de marcarlo/desmarcarlo
+* src/componentes/episodios/tarjeta-episodio.componente.tsx - Tarjeta para cada episodio dentro de la vista de personaje.
 
 ## Guía para comenzar
 
